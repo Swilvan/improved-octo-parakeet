@@ -1,0 +1,15 @@
+
+import kotlin.math.*
+import kotlin.random.*
+
+fun main(args: Array<String>) {
+    val upper:Long = args[0].toLong()
+    val numIntervals = log10(upper.toDouble()).toInt()
+    val intervals: List<Long> = List(numIntervals, { 
+         (upper / 10.toDouble().pow(it)).toLong()
+    })
+    val randoms = generateRandom(intervals)
+    println(randoms)
+}
+
+fun generateRandom(maximums: List<Long>): List<Long> = maximums.reversed().map{ max -> Random.nextLong(max/10, max) }
