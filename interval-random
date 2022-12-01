@@ -9,7 +9,12 @@ fun main(args: Array<String>) {
          (upper / 10.toDouble().pow(it)).toLong()
     })
     val randoms = generateRandom(intervals)
-    println(randoms)
+    
+    println(randoms.map{it.toString()
+        .reversed()
+        .chunked(3)
+        .joinToString(".")
+        .reversed()})
 }
 
 fun generateRandom(maximums: List<Long>): List<Long> = maximums.reversed().map{ max -> Random.nextLong(max/10, max) }
